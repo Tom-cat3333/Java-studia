@@ -4,6 +4,10 @@
  */
 package CRM;
 
+import javax.swing.JOptionPane;
+import Model.*;
+import java.util.HashSet;
+
 /**
  *
  * @author sasha
@@ -13,8 +17,13 @@ public class registration extends javax.swing.JFrame {
     /**
      * Creates new form registration
      */
+    
+    public String emailPattern = "^[a-zA-Z0-9]+[@]+[a-zA-Z0-9]+[.]+[a-zA-Z0-9}+$";
+    public String phonePattern = "^[0-9]*$";
+    
     public registration() {
         initComponents();
+        btnRegister.setEnabled(false);
     }
 
     /**
@@ -99,6 +108,11 @@ public class registration extends javax.swing.JFrame {
         btnReturn.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnReturn.setText("Wróć");
         btnReturn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnReturn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReturnActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnReturn, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 410, -1, -1));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Background.png"))); // NOI18N
@@ -117,8 +131,22 @@ public class registration extends javax.swing.JFrame {
     }//GEN-LAST:event_txtNIPNumberActionPerformed
 
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
-        // TODO add your handling code here:
+        User user = new User();
+        user.setName("");
+        user.setSurname("");
+        user.setEmail(txtEmail.getText());
+        user.setPassword(txtPassword.getText());
+        user.setPhone("");
+        user.setPosition("");
+        
     }//GEN-LAST:event_btnRegisterActionPerformed
+
+    private void btnReturnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReturnActionPerformed
+        int a = JOptionPane.showConfirmDialog(null, "Czy na pewno chcesz wrócić?", "Select", JOptionPane.YES_NO_OPTION);
+        if(a==0){
+            System.exit(0);
+        }
+    }//GEN-LAST:event_btnReturnActionPerformed
 
     /**
      * @param args the command line arguments

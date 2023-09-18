@@ -4,10 +4,20 @@
  */
 package DAO;
 
+import java.sql.*;
 /**
  *
  * @author sasha
  */
 public class ConnectionProvider {
-    
+    public static Connection getCon(){
+        try{
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/crm?useSSL=false","root","password");
+            return con;
+        }
+        catch(Exception e){
+            return null;
+        }
+    }
 }
