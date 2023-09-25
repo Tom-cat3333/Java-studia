@@ -19,5 +19,12 @@ public class tables {
         catch(Exception e){
             JOptionPane.showMessageDialog(null, e);
         }
+        try{
+            String userTable = "create table company(id int AUTO_INCREMENT primary key, name varchar(200), nip varchar(200), address varchar(200), city varchar(20), zipcode varchar(10), country varchar(200))";
+            DbOperations.setDataOrDelete( userTable, "Company table created successfully");
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);
+        }
     }
 }
